@@ -1,4 +1,3 @@
-% Sine Wave Analysis
 % Parameters
 Fs = 44100;               % Sampling frequency
 T = 1;                   % Duration of the signal
@@ -12,7 +11,7 @@ clean_signal = sin(2*pi*f*t);
 desired_resolution_sine = 2;  % 2 Hz frequency resolution
 nFFT_sine = ceil(Fs / desired_resolution_sine);  % Points to achieve 2 Hz (FFT)
 
-% Zero-padding check Clean
+% Zero-padding check
 if nFFT_sine > length(clean_signal)
     clean_signal = [clean_signal, zeros(1, nFFT_sine - length(clean_signal))];  % Zero-pad the sine wave to length nFFT_sine
 end
@@ -33,14 +32,14 @@ magX_dB = magX_dB - max(magX_dB);
 f_axis_sine = (0:nFFT_sine-1)*(Fs/nFFT_sine);
 
 
-% Loading the recorded sound
+% Loading sound
 [y, fs] = audioread('ericaparken 57.mp3');
 
-% recorded sound frequency resolution
+% recording frequency resolution
 desired_resolution_audio = 2;  % 2 Hz frequency resolution
 nFFT_audio = ceil(fs / desired_resolution_audio);  % Number of points in FFT to achieve 2 Hz resolution
 
-% Zero-padding Check Audio
+% Zero-padding check
 if nFFT_audio > length(y)
     y = [y; zeros(nFFT_audio - length(y), 1)];  % Zero-pad the audio file to length nFFT_audio
 end
