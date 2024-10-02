@@ -10,14 +10,14 @@ clean_signal = sin(2 * pi * f * t);
 % Loading the recorded sound
 [y, fs] = audioread('Ericaparken 57.mp3');
 
-% Mathing recorded signal to clean signal duration
+% Matching durations
 nSamples = min(length(y), length(clean_signal));  % Ensure equal sampling size
 recorded_signal = y(1:nSamples);  % Truncating recorded signal to clean signal duration
 
-% Normalizing recorded signal
+% Normalizing recording
 recorded_signal = recorded_signal / max(abs(recorded_signal));  % Normalize between -1 and 1
 
-% Time vector for recorded signal
+% Time vector recording
 t_recorded = (0:nSamples-1) / fs;  % Time vector for the recorded signal
 
 % Plotting signals
